@@ -38,7 +38,7 @@
     (let [parsed (xml/parse r {:namespace-aware false})
           icon (subs file 6 (- (count file) 4))]
       (assert (= :svg (:tag parsed)))
-      (println "(def" (if (or (resolve (symbol icon)) (#{"divide"} icon)) (str icon "-icon") icon))
+      (println "(def" (if (or (resolve (symbol icon)) (#{"divide" "cast"} icon)) (str icon "-icon") icon))
       (print "  [")
       (doseq [[i element] (map-indexed vector (:content parsed))]
         (when (pos? i)
